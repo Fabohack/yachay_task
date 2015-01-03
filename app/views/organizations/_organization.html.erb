@@ -1,0 +1,10 @@
+<div class="panel panel-info">
+  <div class="panel-heading"><%= organization.created_at.strftime("%B %d, %Y") %></div>
+  <div class="panel-body">
+		<h4 class="panel-title" ><%= link_to organization.name, organization %></h4>
+		<hr>
+		<%= link_to "Crear Sub-organización", new_organization_path(:parent_id => organization ) %> |
+		<%= link_to 'Editar', edit_organization_path(organization) %> |
+		<%= link_to 'Eliminar', organization, method: :delete, data: { confirm: 'Are you Sure?' } %>
+  </div>
+</div>

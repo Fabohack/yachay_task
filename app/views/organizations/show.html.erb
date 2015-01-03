@@ -1,0 +1,35 @@
+<%= link_to 'Back', :back, :class => 'btn btn-default btn-sm' %>
+<hr>
+<% provide(:title, @organization.name) %>
+  
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+      <h1>
+        <%= @organization.name %>
+      </h1>
+
+      <h4>Sub-Organizations of <%= @organization.name %> </h4>
+      <% @organization.children.each do |org| %>
+          <li><%= org.name %></li>
+      <% end %>
+
+      <hr>
+      <%= link_to "Create Sub-Organization", new_organization_path(parent_id: @organization.id), remote: true %>
+      <div id="new_org">  <!-- La etiqueta esta en el new.js.erb declarada no borrar essta linea -->
+      </div>
+        </section>
+      </div>
+    </div>
+
+  <div class="col-md-8">
+    <% if @organization.goals.any? %>
+        <h3>Objetivos Estratégicos (<%= @organization.goals.count %>)</h3>
+        <%= link_to "Create Goal", new_goal_path(organization_id: @organization.id) %>
+        hola
+        <ol class="goals">
+          <%= render @goals %>
+        </ol>
+        <%= will_paginate @goals %>
+    <% end %>
+  </div>

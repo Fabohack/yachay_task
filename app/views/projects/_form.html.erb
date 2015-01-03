@@ -1,0 +1,138 @@
+
+<!doctype html>
+<html lang="es">
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+      <link rel="stylesheet" href="/resources/demos/style.css">
+
+      <script>
+          $(document).ready(function() {
+              $( "#project_estimated_start_date" ).datepicker({ dateFormat: "dd-mm-yy" });
+              $( "#project_estimated_end_date" ).datepicker({ dateFormat: "dd-mm-yy" });
+              $( "#project_real_start_date" ).datepicker({ dateFormat: "dd-mm-yy" });
+              $( "#project_real_end_date" ).datepicker({ dateFormat: "dd-mm-yy" });
+          });
+      </script>
+    </head>
+    <body>
+    </body>
+</html>
+
+<%= form_for @project do |f| %>
+
+  <%= render "shared/errors", object: @project %>
+
+<div class="panel-body">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="field">
+          <%= f.label :alias %>
+          <div class="controls">
+            <%= f.text_field :alias,autofocus: true, class: 'form-control', :placeholder => "Project alias" %>
+          </div>
+        <div class="field">
+          <%= f.label :name %>
+          <div class="controls">
+            <%= f.text_area :name,  class: 'form-control', :placeholder => "Project name" %>
+          </div>
+        </div>  
+        </div> 
+         <div class="field">
+          <%= f.label :description %>
+          <div class="controls">
+            <%= f.text_area :description, class: 'form-control', :placeholder => "Project description" %>
+          </div>
+        </div> 
+        <table>
+          <tr>
+            <td width="220">
+              <div class="field">
+                <label>Estimated budget</label>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <%= f.text_field :price, class: "form-control", size: "5" %>
+                </div>
+              </div>
+            </td>
+            <td width="200">
+              <center>
+                <%= f.label :is_critical %>
+                <div class="controls">
+                  <%= f.check_box :is_critical %>
+                </div>
+              </center>
+            </td>
+            <td width="200">
+            <center>
+              <%= f.label :is_strategic %>      
+              <div class="controls">
+                <%= f.check_box :is_strategic %>
+              </div>
+              </center>
+            </td>
+            <td width="100">
+            <center>
+              <%= f.label :status%>
+              <div class="controls">
+                <%= f.select :status, Project.statuses.keys.map {|status| [status.titleize, status]}, prompt: 'Pick one' %>
+              </div>
+              </center>
+            </td>
+          </tr>
+        </table>
+
+        <table>
+          <td width="300">
+            <%= f.label :estimated_start_date %><br>
+            <%= f.text_field :estimated_start_date , :placeholder => "Day-Month-Year" %>
+          </td>
+          <td width="300">
+            <%= f.label :estimated_end_date %><br>
+            <%= f.text_field :estimated_end_date , :placeholder => "Day-Month-Year" %>
+          </td>
+          <td width="300">
+            <%= f.label :real_start_date %><br>
+            <%= f.text_field :real_start_date , :placeholder => "Day-Month-Year" %>
+          </td>
+          <td width="300">
+            <%= f.label :real_end_date %><br>
+            <%= f.text_field :real_end_date , :placeholder => "Day-Month-Year" %>
+          </td>
+        </table>
+
+        <div class="field">
+          <%= f.label :remark %>
+          <div class="controls">
+            <%= f.text_area :remark, class: 'form-control', :placeholder => "Remarks of the project" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <h4><b><%=t('Strategic goals')%></b> </h4>
+        <hr>
+        <table>
+          <%= f.collection_check_boxes(:goal_ids, Goal.all, :id, :name) do |b| %>
+            <tr>
+              <%= b.label(:"data-value" => b.value) { b.check_box + truncate(b.text, length: 250, separator: " ") } %>
+            </tr>
+          <%end %>       
+        </table> 
+      </div>
+    </div>
+  </div>
+
+    <div class="actions">
+      <%= button_tag(type: 'submit', class: "btn btn-default btn-sm") do %>
+        <%  if params[:action] == 'new' %>
+          Create Project
+        <% else %>
+          Update Project
+        <% end %>
+      <% end %>    
+      <%= link_to :back, :class => 'btn btn-default btn-sm' do %>Cancel<% end %>
+    </div>
+  </div>
+<% end %>

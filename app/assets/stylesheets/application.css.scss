@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+textarea 
+{ 
+	resize: vertical; 
+	min-height: 35px;
+	max-height: 300px;
+}
+
+.in-progress {
+	color: #FE9A2E;
+}
+
+.delayed {
+	color: #F70E0E;
+}
+
+.closed {
+	color: #017911;
+}
+
+.paused {
+	color: #898989;
+}
+
+.active {
+	color: #B8BB00;
+}
+
+
+.dropdown-submenu > .dropdown-menu{
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+.dropdown-submenu:hover > .dropdown-menu{
+    display: none;
+}
+
+.shown{
+    display: block;
+}
+
+.dropdown-submenu:hover > .shown{
+    display: block;
+}
+
+.vcenter {
+    vertical-align: middle;
+}
+
+.pull-center {
+	display: block;
+	width:50px;
+	margin:0px auto;
+}

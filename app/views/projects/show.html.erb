@@ -1,0 +1,86 @@
+
+<!--
+<%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-primary btn-xs' %>
+
+<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
+<%= link_to 'Back', projects_path, :class => 'btn btn-primary btn-xs' %>
+<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
+-->
+<%= link_to 'Back', :back, :class => 'btn btn-default btn-sm' %> | 
+<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-default btn-sm'  %>
+<%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-default btn-sm' %>
+
+<hr>
+<strong><h3>Project Details</h3></strong>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4><b><%= @project.alias.upcase %></b></h4>
+    <%= link_to 'All memberships', project_memberships_path(@project), :class => 'btn btn-default btn-sm' %> |
+    <%= link_to 'Create membership', new_project_membership_path(@project), :class => 'btn btn-default btn-sm' %>
+  </div><!--/panel-heading--> 
+  <div class="panel-body">
+    <table class="table">
+      <tr>
+        <td><b>Nombre:</b></td>
+        <td><%= @project.name %></td>
+      </tr>
+    </table>
+    <table class="table">
+      <tr>
+        <td><b>Description:</b></td>
+        <td><%= @project.description %></td>
+      </tr>
+    </table>
+    <table class="table">
+      <tr>
+        <td><b>Estimated budget:</b></td>
+        <td><%= format_budget(@project) %></td>
+        <td><b>¿Is Critic?:</b></td>
+        <td><%= format_is_critical(@project,'center') %></td>
+         <td><b>Strategic:</b></td>
+         <td><%= format_is_strategic(@project,'center') %></td>
+        <td><b>Status:</b></td>
+        <td><%= format_status(@project,'center') %></td>
+      </tr>
+    </table>
+
+    <table>
+      <thead>
+      <th>Estimated Start Date:</th>
+      <th>Estimated end Date:</th>
+      <th>Real Start Date:</th>
+      <th>Real End Date:</th>
+      </thead>
+      <tr>
+        <td width="180">
+          <%= @project.estimated_start_date? ? @project.estimated_start_date.strftime("%d %B, %Y") : 'Not set yet'  %>
+        </td>
+        <td width="180">
+          <%= @project.estimated_end_date? ? @project.estimated_end_date.strftime("%d %B, %Y") : 'Not set yet' %>
+        </td>
+        <td width="180">
+          <%= @project.real_start_date? ? @project.real_start_date.strftime("%d %B, %Y") : 'Not set yet' %>
+        </td>
+        <td width="180">
+          <%= @project.real_end_date? ? @project.real_end_date.strftime("%d %B, %Y") : 'Not set yet' %>
+        </td>
+      </tr>
+    </table>
+
+    <tr>
+      <td width="400">
+        Remark:
+        <%= format_remark(@project) %>
+      </td>
+    </tr>
+
+    <hr>
+     <h4><b>Strategic Goals for project <%= @project.name %></b></h4>    
+    <ul>
+      <% @goals.each do |goal| %>
+        <li><%= goal.name %></li>
+      <% end %>
+    </ul>
+  </div><!--/panel-body-->
+</div><!--/panel-->

@@ -1,0 +1,49 @@
+<%= link_to "Reporte", show_statistics_path, :class => 'btn btn-default' %> 
+<hr>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    
+    <h3>Statistics</h3>
+  </div><!--/panel-heading--> 
+  <div class="panel-body">
+    <table class="table table-responsible">
+      <thead>
+        <th width="5"></th>
+        <th width="100"><center><b>Proyecto</b></center></th>
+        <th width="20"><center><b>Responsable</b></center></th>
+        <th width="200"><center><b>Avance</b></center></th>
+        <th width="30"><center><b>Estado</b></center></th>
+        <th width="20"><center><b>Crítico?</b></center></th>
+        <th width="60"><center><b>Estratégico?</b></center></th>
+      </thead>
+      <% @projects.each do |project| %>
+        <tr>
+          <td>
+            <%= raw flag_project(project.tasks) %>
+          </td>
+          <td>
+            <b><%= link_to project.alias.upcase, project_tasks_path(project) %></b>
+          </td>
+          <td>
+            <center>
+              <%= is_member_assigned(project).upcase %>
+            </center>
+          </td>
+          <td>
+            <%= raw generate_bar(project) %>
+          </td>
+          <td>
+            <%= format_status(project,'center') %>
+          </td>
+          <td>
+            <%= format_is_critical(project,'center') %>
+          </td>
+          <td>
+            <%= format_is_strategic(project,'center') %>
+          </td>
+        </tr> 
+      <% end %>
+    </table>
+<!--      <div id="chart_div" style="width: 600px; height: 500px;"></div> -->
+  </div>
+</div> <!--/panel-info -->

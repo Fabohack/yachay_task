@@ -1,0 +1,45 @@
+<h1>Impedimentos</h1>
+
+<% @inpairments.each do |impar| %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>Impedimento: <%= impar.inpadesc %></b>
+      </div><!--/panel-heading-->
+      <div class="panel-body">
+        <table>
+          <tr>
+            <td width="450" >
+              <b>Proyecto:</b>
+              <%=impar.name %>
+            </td>
+            <td width="250" >
+              <b></b>
+              <%= %>
+            </td>
+
+            <td width="100" align="center">
+              <b></b>
+              <%=format_critical(impar,'center') %>
+            </td>
+            <td  width="180">
+              <b></b>
+              <%= format_status_pro(impar,'right') %>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <thead>
+          </thead>
+          <tr >
+            <td width="400">
+              <b>Tarea:</b>
+              <%=impar.taskdesc  %>
+            </td>
+          </tr>
+        </table>
+      </div><!--/panel-body-->
+    </div><!--/panel-->
+
+<% end %>
+

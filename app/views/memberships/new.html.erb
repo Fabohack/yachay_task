@@ -1,0 +1,29 @@
+<%= link_to :back, :class => 'btn btn-default btn-sm' do %>Back<% end %>
+<hr>
+<h1>New membership for <%= link_to @project.alias, @project %></h1>
+
+<%= form_for([@project, @membership]) do |f| %>
+  
+  <%= render "shared/errors", object: @membership %>
+
+  <div class="panel-body">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="field">
+          <%= f.label :responsible_role %>
+          <%= f.select :responsible_role, Membership::RESPONSIBLE_ROLE_OPTIONS, prompt: "Pick one" %>
+        </div>
+        <div class="field">
+          Assigned to:
+          <%= collection_select(:memberships, :user_id, User.all, :id, :email) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-default btn-sm") do %>
+        Create Membership
+    <% end %>    
+    <%= link_to :back, :class => 'btn btn-default btn-sm' do %>Cancel<% end %>
+  </div>
+<% end %>

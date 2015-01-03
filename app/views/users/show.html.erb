@@ -1,0 +1,18 @@
+<h3>User</h3>
+<p>Name: <%= @user.name if @user.name %></p>
+<p>Email: <%= @user.email if @user.email %></p>
+
+<p>
+  <%= pluralize(@projects.size, 'projects') %> 
+</p>
+
+<% if @projects.any? %>
+  <h3>Assigned projects</h3>
+  <ul>
+    <% @projects.each do |project| %>
+      <li>
+        <%= link_to project.name, project %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

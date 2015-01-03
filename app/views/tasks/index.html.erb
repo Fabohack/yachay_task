@@ -1,0 +1,69 @@
+<!--
+<%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-primary' %>
+<%= link_to "Atras", projects_path, :class => 'btn btn-primary' %> |
+<%= link_to "Editar Proyecto", edit_project_path(@project), :class => 'btn btn-primary' %>
+-->
+<%= link_to "Atras", projects_path, :class => 'btn btn-default' %> |
+<%= link_to "Detalles Proyecto", project_path(@project), :class => 'btn btn-default' %>
+<%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-default' %>
+<hr>
+<div class="panel-heading">
+      <h6 class="panel-title">Progreso Total del Proyecto <%= link_to(@project.alias.upcase, @project)%> <%= raw flag_project(@project.tasks) %></h6>
+      <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= @tasks.count %></span></h6>
+      <br>
+      <div class="progress">
+        <%= raw generate_bar(@project) %>
+        
+      </div>      
+    </div><!--/panel-heading--> 
+      <h3>Listado de Tareas para: <%= link_to(@project.name, @project)%></h3>
+<hr>
+
+<% @tasks.each do |task| %>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <table>
+        <td width="50">
+          <%=flag_task_deadline(task)%>
+        </td>
+        <td width="200">
+          <strong>Fecha Fin:</strong> <br> <%= task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
+        </td>
+        <td width="200">
+          <strong>Fecha Fin real:</strong> <br> <%= task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet'  %>
+        </td>
+        <td width="180">
+          <strong>Asignada a: </strong> <%= task.assigned.try(:email) %>
+        </td>
+        <td width="150" align="right">
+          <strong>Complejidad: </strong> <%=format_task_complexity(task)%>
+        </td>
+        <td width="160" align="right">
+         <strong>Estado: </strong>  <%= format_task_states(task) %>
+        </td>
+      </table>
+    </div><!--/panel-heading--> 
+    <div class="panel-body">
+      <table>
+          <td>
+            <%= task.description %>
+          </td>
+        <tr>
+          <td>
+            <hr>
+            <div class="actions">
+              <% if task.assigned_to_id == current_user.id || current_user.admin? || task.assigned_to_id== nil  %>
+                <%= link_to "Editar Tarea", edit_project_task_path(@project, task) %> | <%= link_to "Eliminar Tarea", project_task_path(@project, task), method: :delete, data: {confirm: 'Are you sure?'} %>
+              <% else %>
+                <%= 'NO Puede Editar' %>
+              <% end %>
+              | <%= link_to "All Impairments(#{task.inpairments.count})", project_task_inpairments_path(@project,task) %>
+            </div>
+  
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% end %>

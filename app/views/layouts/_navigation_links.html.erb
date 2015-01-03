@@ -1,0 +1,43 @@
+<%# add navigation links to this file %>
+<% if user_signed_in? %>
+  <ul class="nav navbar-nav">
+    <li class="dropdown">
+      <a class="dropdown-toggle glyphicon glyphicon-home" role="button" data-toggle="dropdown" href="#"  <%= link_to t('Home'), "#" %>  <span class="caret"></span></a>
+
+      <ul id="g-account-menu" class="dropdown-menu" role="menu">
+        <li><%= link_to t('All Projects'), projects_path %></li>
+        <li><%= link_to t('All Tasks') %></li>
+        <li class="divider"></li>
+        <li><%= link_to t('logout'), destroy_user_session_path, :method=>'delete', :class=>'glyphicon glyphicon-off'%></li>
+      </ul>
+    </li>
+  </ul>
+<!--  <a class="navbar-brand" href="#">Proyectos</a> -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to current_user.email, edit_user_registration_path   %>  </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+          <%=t('Settings')  %> <span class="caret"></span>
+        </a>
+        <ul id="g-account-menu" class="dropdown-menu" role="menu">
+          <% if current_user.admin? %>
+            <li><%= link_to ' Users', users_path %></li>
+            <li><%= link_to ' Organizations', organizations_path %></li>
+            <li><%= link_to ' Strategic Goals', goals_path %></li>
+              <li><%= link_to ' States', states_path %></li>
+            <li class="divider"></li>
+          <% end %>
+          <!--
+          <li><%= link_to t('Edit Account'), edit_user_registration_path %></li>
+          -->
+        </ul>
+      </li>
+    </ul>
+<% else %>
+  <ul class="nav navbar-nav">
+    <li><%= link_to t('Sign In'), new_user_session_path %></li>
+
+    <li><%= link_to t('Sign Up'), new_user_registration_path %></li>
+
+  </ul>
+<% end %>

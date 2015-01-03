@@ -1,0 +1,23 @@
+<div class="panel-heading"> </div><!--/panel-heading-->
+<h3>Listado de Usuarios: </h3>
+<hr>
+
+<% @users.each do |user| %>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <table>
+          <td width="300">
+            <%= link_to user.email, filtered_tasks_path(user.id), :class => 'btn btn-warning' %>
+          </td>
+          <td width="300">
+            <%=user.name%>
+          </td>
+          <td width="300">
+            <%= user.role  %>
+          </td>
+        </table>
+      </div><!--/panel-heading-->
+
+    </div>
+<% end %>

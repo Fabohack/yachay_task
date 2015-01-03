@@ -1,0 +1,20 @@
+<%= link_to 'Back', goals_path, :class => 'btn btn-default'  %> | 
+<%= link_to("New Goal", new_goal_path, :class => 'btn btn-default') %>
+
+<hr>
+<h3>Listing Strategic Goals</h3>
+
+<% @goals.each do |goal| %>
+
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <%= goal.name  %>
+    </div>
+    <div class="panel-body">
+	  <%= link_to 'Show', goal, :class => 'btn btn-default'  %>
+	  <%= link_to 'Edit', edit_goal_path(goal), :class => 'btn btn-default'  %>
+	  <%= link_to 'Destroy', goal, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-default' %>
+	 </div>
+  </div>
+
+<% end %>

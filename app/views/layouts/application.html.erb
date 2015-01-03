@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Pulpo Yachay" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pulpo Yachay" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <% if user_signed_in? %>
+      <div class="container">
+        <div class="row">
+          <%= render 'layouts/menu' %>
+          <%= render 'layouts/dashboard' %> 
+
+        </div><!--/row-->
+      </div><!--/container-->
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </body>
+</html>

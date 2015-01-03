@@ -1,0 +1,53 @@
+<h1>Tareas Asignadas</h1>
+  <% @tasks.each do |task| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>Proyecto:</b> <%= link_to(task.assigned_project.try(:alias).upcase, project_tasks_path(task.assigned_project.try(:id))) %>
+        <b><span class="pull-right">Estado: <%= format_task_states(task) %></span></b>
+      </div><!--/panel-heading-->
+      <div class="panel-body">
+        <table>
+          <tr>
+            <td width="300">
+              <b>Descripción:</b>
+              <%= link_to(task.description,edit_project_task_path(task.assigned_project.try(:id), task)) %>
+            </td>
+            <td width="250" >
+              <b>Fecha limite:</b>
+              <%=task.deadline? ? task.deadline.strftime("%d %B, %Y") : 'Not set Yet '  %>
+            </td>
+            <td width="250" >
+              <b>Fecha fin real:</b>
+              <%=task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet ' %>
+            </td>
+<!--
+            <td width="100" align="center">
+              <b>Puntuacion:</b>
+              <%=task.score  %>
+            </td>
+-->            
+            <td  width="180">
+              <b>Complejidad:</b>
+              <%=format_task_complexity(task)  %>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <thead>
+          </thead>
+          <tr >
+            <td width="300">
+              <b>Proyecto:</b>
+              <%=task.assigned_project.try(:alias)  %>
+            </td>
+            <td width="300">
+              <b>Correo:</b>
+              <%=task.assigned.try(:email) %>
+            </td>
+          </tr>
+        </table>
+      </div><!--/panel-body-->
+    </div><!--/panel-->
+
+  <% end %>
+

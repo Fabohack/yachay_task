@@ -1,0 +1,20 @@
+
+<header id="content-header">
+  <h4>New aligment for <%= link_to @project.name, @project %></h4>
+</header>
+
+<%= form_for([@project, @alignment]) do |f| %>
+    <%= render "shared/errors", object: @alignment %>
+    <fieldset>
+      <ol>
+        <li class="required">
+          <p>Assigned to:</p>
+          <%= collection_select(:@alignments, :goal_id,Goal.all, :id, :name) %>
+        </li>
+      </ol>
+      <p>
+        <%= f.submit %>
+        <%= link_to "Cancel", @project, class: 'button' %>
+      </p>
+    </fieldset>
+<% end %>

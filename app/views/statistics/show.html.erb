@@ -1,0 +1,27 @@
+
+<%= link_to "Bar Chart", statistics_path, :class => 'btn btn-default' %>
+<hr>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    
+    <h3>Project's Reports</h3>
+  </div><!--/panel-heading--> 
+  <div class="panel-body">
+    <% @projects.each do |project| %>  
+      <table>
+          <td width="200">
+            <b>Responsable:</b>
+            <h6><%= is_member_assigned(project).upcase %></h6>
+          </td>
+          <td width="600">
+            <h5><%= format_is_critical(project,"") %></h5>
+            <h4><b><%= link_to(project.alias.upcase, project_tasks_path(project)) %> <%= format_status(project,'right') %></b></h4>
+            <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= project.tasks.count %></span></h6>
+            <br>
+              <%= raw generate_bar(project) %>
+          </td>
+      </table>     
+      <hr>   
+    <% end %>
+  </div> <!-- panel-body -->
+</div> <!--/panel-info -->

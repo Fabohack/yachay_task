@@ -1,0 +1,17 @@
+
+<header id="content-header">
+  <h4>Alignments for <%= link_to @project.name, @project %></h4>
+</header>
+
+<ol id="registrations">
+  <% @alignments.each do |alignment| %>
+      <li>
+          <span class="date">
+            <%= time_ago_in_words(alignment.created_at) %> ago
+          </span>
+          <span class="how-heard">
+            (<%= alignment.goal_id %>)
+          </span>
+      </li>
+  <% end %>
+</ol>

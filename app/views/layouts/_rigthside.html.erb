@@ -1,0 +1,67 @@
+<ul class="nav nav-stacked">
+    <% if user_signed_in? %>
+      <li><%= link_to '<i class="glyphicon glyphicon-plus"></i> New Project'.html_safe , new_project_path %></li>
+      <hr>
+      <div class="dropdown">
+        <li class="dropdown-toggle glyphicon glyphicon-eye-open" id="dropdownMenu1" data-toggle="dropdown">
+          Filter Projects
+          <span class="caret"></span>
+        </li>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation" class="dropdown-header"><h5>Open Projects</h5></li>
+          <li role="presentation"><%= link_to 'All Open Projects', filtered_projects_path(:open) %></li>
+          <% if current_user.admin? %>
+            <li role="presentation"><%= link_to 'Open Strategic Projects', filtered_projects_path(:open_is_strategic) %></li>
+            <li role="presentation"><%= link_to 'Open Not Strategic Projects', filtered_projects_path(:open_is_not_strategic) %></li>
+            <li role="presentation"><%= link_to 'Open Critic Projects', filtered_projects_path(:open_is_critic) %></li>
+            <li role="presentation"><%= link_to 'Open Not Critic Projects', filtered_projects_path(:open_is_not_critic) %></li>
+          <%end%>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header"><h5>Closed Projects</h5></li>      
+          <li role="presentation"><%= link_to 'All Closed Projects', filtered_projects_path(:closed) %></li>
+          <% if current_user.admin? %>
+            <li role="presentation"><%= link_to 'Closed Strategic Projects', filtered_projects_path(:closed_is_strategic) %></li>
+            <li role="presentation"><%= link_to 'Closed Not Strategic Projects', filtered_projects_path(:closed_is_not_strategic) %></li>
+            <li role="presentation"><%= link_to 'Closed Critic Projects', filtered_projects_path(:closed_is_critic) %></li>
+            <li role="presentation"><%= link_to 'Closed Not Critic Projects', filtered_projects_path(:closed_is_not_critic) %></li>
+          <%end%>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header"><h5>Transferred Projects</h5></li>
+          <li role="presentation"><%= link_to 'All Transferred Projects', filtered_projects_path(:transferred) %></li>
+        </ul> 
+<!--        <li><%= link_to 'Open Projects', filtered_projects_path(:open), class: 'button' %></li>
+      <li><%= link_to 'Closed Projects', filtered_projects_path(:closed), class: 'button' %></li>
+      <li><%= link_to 'Suspended Projects', filtered_projects_path(:suspended), class: 'button' %></li>
+      <li><%= link_to 'Transferred Projects', filtered_projects_path(:transferred), class: 'button' %></li>
+-->        
+    </div>
+    <% else %>
+<!--    
+      <li>Menu 1</li>
+      <li>Menu 2</li>
+'-->
+    <% end %>
+</ul>
+
+
+<!--
+<div class="btn-group btn-group-justified">
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-plus"></i><br>
+    Service
+  </a>
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-cloud"></i><br>
+    Cloud
+  </a>
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-cog"></i><br>
+    Tools
+  </a>
+  <a href="#" class="btn btn-info col-sm-3">
+    <i class="glyphicon glyphicon-question-sign"></i><br>
+    Help
+  </a>
+
+-->  
+</div>

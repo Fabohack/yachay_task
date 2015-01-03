@@ -1,0 +1,80 @@
+<%= link_to t('Create Project'), new_project_path, :class => 'btn btn-default' %>
+<hr>
+<h3> <%= t('Listing Projects') %> </h3>
+
+<hr>
+<% @projects.each do |project| %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><b><%= format_is_critical(project,'') %><%= link_to(project.alias.upcase, project_tasks_path(project)) %> <%= raw flag_project(project.tasks) %> <%= format_status(project,'right') %></b></h4>
+      <h6 class="panel-title"><span class="pull-right">Total de Tareas: <%= project.tasks.count %></span></h6>
+      <br>
+          <%= raw generate_bar(project) %>
+    </div><!--/panel-heading--> 
+    <div class="panel-body">
+      <table class="table">
+        <tr>
+          <td>
+            <b>Name:</b>
+            <%= project.name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Description:</b>
+            <%= project.description %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <b>Strategic:</b>
+            <%= format_is_strategic(project,'') %>
+          </td>
+          <td>
+            <b>Estimated budget:</b>
+            <%= format_budget(project) %>
+          </td>
+        </tr>
+        <tr>
+          <td width="400">
+            Remark:
+            <%= format_remark(project) %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <thead>
+            <th>Estimated Start Date:</th>
+            <th>Estimated end Date:</th>
+            <th>Real Start Date:</th>
+            <th>Real End Date:</th>
+        </thead>
+        <tr >
+          <td width="180">
+            <%= project.estimated_start_date? ? project.estimated_start_date.strftime("%d %B, %Y") : 'Not set yet' %>
+          </td>
+          <td  width="180">
+            <%= project.estimated_end_date? ? project.estimated_end_date.strftime("%d %B, %Y") : 'Not set yet' %>
+          </td>
+          <td width="180">
+            <%= project.real_start_date? ? project.real_start_date.strftime("%d %B, %Y") : 'Not set yet' %>
+          </td>
+          <td width="180">
+            <%= project.real_end_date? ? project.real_end_date.strftime("%d %B, %Y") : 'Not set yet' %>
+          </td>
+        </tr>
+      </table>
+      <hr>
+
+      <%= link_to "Edit", edit_project_path(project) %> | 
+      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+      <%= link_to 'All memberships', project_memberships_path(project) %> | 
+      <%= link_to 'Create membership', new_project_membership_path(project) %>|
+
+    </div><!--/panel-body-->
+  </div><!--/panel-->
+
+ <% end %>

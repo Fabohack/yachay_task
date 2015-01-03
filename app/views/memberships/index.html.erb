@@ -1,0 +1,38 @@
+<%= link_to :back, :class => 'btn btn-default btn-sm' do %>Back<% end %> | 
+<%= link_to 'Create membership', new_project_membership_path(@project), :class => 'btn btn-default btn-sm' %>
+<hr>
+<h3> <%= t('Memberships for') %> <%= link_to @project.alias, @project %> </h3>
+<hr>
+<table class="table table-responsible">
+  <thead>
+    <th>Rol</th>
+    <th>Correo</th>
+    <th>Nombre</th>
+  </thead>
+  <% @memberships.each do |membership| %>
+    <tbody>
+      <td>
+        <span class="how-heard">
+          (<%= membership.responsible_role %>)    
+        </span>
+      </td>
+      <td>
+        <span class="how-heard">
+          (<%= membership.user.email %>)    
+        </span>
+      </td>
+      <td>
+        <span class="how-heard">
+          (<%= membership.user.name %>)    
+        </span>
+      </td>
+  <!--       <span class="date">
+          <%= time_ago_in_words(membership.created_at) %> ago
+        </span>
+  -->   
+      <td>
+            <%= link_to "Delete Membership", project_membership_path(@project, membership), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default btn-sm' %>
+      </td>
+    </tbody>
+  <% end %>
+</table>
