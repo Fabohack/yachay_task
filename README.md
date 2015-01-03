@@ -1,4 +1,4 @@
-Pulpo Yachay
+Yachay TASK
 ================
-Projects and tasks
+Events and tasks
 -------
