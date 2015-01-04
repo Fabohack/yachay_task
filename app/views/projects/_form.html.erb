@@ -31,23 +31,24 @@
         <div class="field">
           <%= f.label :alias %>
           <div class="controls">
-            <%= f.text_field :alias,autofocus: true, class: 'form-control', :placeholder => "Project alias" %>
+            <%= f.text_field :alias,autofocus: true, class: 'form-control', :placeholder => "Alias del Evento" %>
           </div>
         <div class="field">
           <%= f.label :name %>
           <div class="controls">
-            <%= f.text_area :name,  class: 'form-control', :placeholder => "Project name" %>
+            <%= f.text_area :name,  class: 'form-control', :placeholder => "Nombre del Evento" %>
           </div>
         </div>  
         </div> 
          <div class="field">
           <%= f.label :description %>
           <div class="controls">
-            <%= f.text_area :description, class: 'form-control', :placeholder => "Project description" %>
+            <%= f.text_area :description, class: 'form-control', :placeholder => "Descripcion del Evento" %>
           </div>
         </div> 
         <table>
           <tr>
+            <!--
             <td width="220">
               <div class="field">
                 <label>Estimated budget</label>
@@ -57,6 +58,7 @@
                 </div>
               </div>
             </td>
+            -->
             <td width="200">
               <center>
                 <%= f.label :is_critical %>
@@ -106,7 +108,7 @@
         <div class="field">
           <%= f.label :remark %>
           <div class="controls">
-            <%= f.text_area :remark, class: 'form-control', :placeholder => "Remarks of the project" %>
+            <%= f.text_area :remark, class: 'form-control', :placeholder => "Observaciones del Evento" %>
           </div>
         </div>
       </div>
@@ -127,12 +129,12 @@
     <div class="actions">
       <%= button_tag(type: 'submit', class: "btn btn-default btn-sm") do %>
         <%  if params[:action] == 'new' %>
-          Create Project
+          Create Evento
         <% else %>
-          Update Project
+          Actualizar Evento
         <% end %>
       <% end %>    
-      <%= link_to :back, :class => 'btn btn-default btn-sm' do %>Cancel<% end %>
+      <%= link_to :back, :class => 'btn btn-default btn-sm' do %>Cancelar<% end %>
     </div>
   </div>
 <% end %>

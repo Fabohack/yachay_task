@@ -2,41 +2,46 @@
 <!--
 <%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-primary btn-xs' %>
 
-<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
-<%= link_to 'Back', projects_path, :class => 'btn btn-primary btn-xs' %>
-<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
+<%= link_to 'Editar Evento', edit_project_path(@project), :class => 'btn btn-primary btn-xs'  %>
+<%= link_to 'Atras', projects_path, :class => 'btn btn-primary btn-xs' %>
+<%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-primary btn-xs' %>
 -->
-<%= link_to 'Back', :back, :class => 'btn btn-default btn-sm' %> | 
-<%= link_to 'Edit Project', edit_project_path(@project), :class => 'btn btn-default btn-sm'  %>
-<%= link_to 'Show tasks', project_tasks_path(@project), :class => 'btn btn-default btn-sm' %>
-<%= link_to 'Create Task', new_project_task_path(@project), :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Atras', :back, :class => 'btn btn-default btn-sm' %> |
+<%= link_to 'Editar Evento', edit_project_path(@project), :class => 'btn btn-default btn-sm'  %>
+<%= link_to 'Mostrar Tareas', project_tasks_path(@project), :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-default btn-sm' %>
 
 <hr>
-<strong><h3>Project Details</h3></strong>
+<strong><h3>Detalles Evento</h3></strong>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><b><%= @project.alias.upcase %></b></h4>
-    <%= link_to 'All memberships', project_memberships_path(@project), :class => 'btn btn-default btn-sm' %> |
-    <%= link_to 'Create membership', new_project_membership_path(@project), :class => 'btn btn-default btn-sm' %>
+    <%= link_to 'Todos los integrantes', project_memberships_path(@project), :class => 'btn btn-default btn-sm' %> |
+    <%= link_to 'Agregar Integrante', new_project_membership_path(@project), :class => 'btn btn-default btn-sm' %>
   </div><!--/panel-heading--> 
   <div class="panel-body">
+
     <table class="table">
       <tr>
-        <td><b>Nombre:</b></td>
+        <td><b>Descripcion:</b></td>
         <td><%= @project.name %></td>
       </tr>
     </table>
+    <!--
     <table class="table">
       <tr>
         <td><b>Description:</b></td>
         <td><%= @project.description %></td>
       </tr>
     </table>
+    -->
     <table class="table">
       <tr>
-        <td><b>Estimated budget:</b></td>
+        <!--
+        <td><b>Valor Estimado:</b></td>
         <td><%= format_budget(@project) %></td>
-        <td><b>¿Is Critic?:</b></td>
+        -->
+        <td><b>¿Es Critico?:</b></td>
         <td><%= format_is_critical(@project,'center') %></td>
          <td><b>Strategic:</b></td>
          <td><%= format_is_strategic(@project,'center') %></td>

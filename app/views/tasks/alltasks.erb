@@ -1,5 +1,5 @@
-<h1>Tareas Asignadas</h1>
-  <% @tasks.each do |task| %>
+<h1>Todas las Tareas</h1>
+<% @tasks.each do |task| %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <b>Evento:</b> <%= link_to(task.assigned_project.try(:alias).upcase, project_tasks_path(task.assigned_project.try(:id))) %>
@@ -20,12 +20,12 @@
               <b>Fecha fin real:</b>
               <%=task.real_deadline? ? task.real_deadline.strftime("%d %B, %Y") : 'Not set Yet ' %>
             </td>
-<!--
+            <!--
             <td width="100" align="center">
               <b>Puntuacion:</b>
               <%=task.score  %>
             </td>
--->            
+-->
             <td  width="180">
               <b>Complejidad:</b>
               <%=format_task_complexity(task)  %>
@@ -49,5 +49,5 @@
       </div><!--/panel-body-->
     </div><!--/panel-->
 
-  <% end %>
+<% end %>
 

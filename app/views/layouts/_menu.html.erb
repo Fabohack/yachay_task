@@ -1,13 +1,16 @@
  <div class="col-sm-3"> 
 	<h3>Menu</h3>
 	<hr>
+   <!--
 	<ul class="nav nav-stacked">
 	    <% if user_signed_in? %>
-	      <div class="dropdown">
+
+          <div class="dropdown">
 	        <li class="dropdown-toggle glyphicon glyphicon-eye-open" id="dropdownMenu1" data-toggle="dropdown">
 	          Filter Projects
 	          <span class="caret"></span>
 	        </li>
+
 	        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 	          <li role="presentation"><%= link_to 'All Projects', filtered_statistics_path(:all) %></li>
 	          <li role="presentation" class="divider"></li>
@@ -19,6 +22,7 @@
 	            <li role="presentation"><%= link_to 'Open Critic Projects', filtered_statistics_path(:open_is_critic) %></li>
 	            <li role="presentation"><%= link_to 'Open Not Critic Projects', filtered_statistics_path(:open_is_not_critic) %></li>
 	          <%end%>
+
 	          <li role="presentation" class="divider"></li>
 	          <li role="presentation" class="dropdown-header"><h5>Closed Projects</h5></li>      
 	          <li role="presentation"><%= link_to 'All Closed Projects', filtered_statistics_path(:closed) %></li>
@@ -31,32 +35,36 @@
 	          <li role="presentation" class="divider"></li>
 	          <li role="presentation" class="dropdown-header"><h5>Transferred Projects</h5></li>
 	          <li role="presentation"><%= link_to 'All Transferred Projects', filtered_statistics_path(:transferred) %></li>
-	        </ul> 
+	        </ul>
+
 	    </div>
 	    <% else %>
-	<!--    
+
 	      <li>Menu 1</li>
 	      <li>Menu 2</li>
-	'-->
+
 	    <% end %>
-	</ul>	
+	</ul>
 	<hr>
+	-->
     <% if current_user.admin? %>
     	<ul class="nav nav-stacked">
-	    	<li><%= link_to '<i class="glyphicon glyphicon-plus"></i> New Project'.html_safe , new_project_path %></li>
+	    	<li><%= link_to '<i class="glyphicon glyphicon-plus"></i> Nuevo evento'.html_safe , new_project_path %></li>
 		</ul>
 	<% end %>
 	<hr>
 	<ul class="nav nav-stacked">
 		<% if user_signed_in? %>
-			<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reportes'.html_safe, statistics_path %></li>
-			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Proyectos'.html_safe, projects_path %></li>
+			<!--<li><%= link_to '<i class="glyphicon glyphicon-list-alt"></i> Reportes'.html_safe, statistics_path %></li>-->
+			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Eventos'.html_safe, projects_path %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Tareas'.html_safe, filtered_tasks_path(current_user) %></li>
-          <% if current_user.admin? %>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Todas las Tareas'.html_safe, All_tasks_path(current_user)   %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Impedimentos'.html_safe, filtered_impairments_path(:impar) %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Tareas x Usuario'.html_safe, filtered_users_path(:choose) %></li>
+          <% if current_user.admin? %>
+
           <% end %>
-		    <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alertas</a></li>
+		    <!-- <li><a href="javascript:;"><i class="glyphicon glyphicon-flash"></i> Alertas</a></li>-->
 		<% end %>
 	</ul>
 </div><!--/col-sm-3 left-->

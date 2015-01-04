@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :statistics
 
   #root to: 'visitors#index'
-  root to: 'statistics#show'
-  #root to: 'projects#index'
+  #root to: 'statistics#show'
+  root to: 'projects#index'
 
   devise_for :users
   resources :users
@@ -23,12 +23,13 @@ Rails.application.routes.draw do
 
   get "assigned_to_me/filter/:scope", :to => 'tasks#assigned_to_me', as: :filtered_tasks
 
+  get "alltasks/filter/:scope", :to => 'tasks#alltasks', as: :All_tasks
+
   get "choose_user/filter/:scope", :to => 'users#choose_user', as: :filtered_users
 
   get "inpairments/filter/:scope", :to => 'inpairments#impairments', as: :filtered_impairments
 
   get "projects/filter/:scope" => "projects#index", as: :filtered_projects
-
 
 
   get "statistics/show", as: :show_statistics

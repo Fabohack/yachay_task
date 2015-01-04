@@ -20,12 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  Pulpo:            "Pulpino"
+  Pulpo:            "Yachay Task"
   Home:             "Inicio"
-  logout:           "Terminar Sesión"
+  logout:           "Cerrar Sesión"
   Settings:         "Herramientas"
   Dashboard:        "Escritorio"
-  All Projects:     "Todos los proyectos"
+  All Projects:     "Todos los Eventos"
   All Tasks:        "Todas las Tareas"
   Users:            "Usuarios"
   Organizations:    "Organizaciones"
@@ -36,11 +36,11 @@ es:
   Statuses:         "Estados"
   Reports:          "Reportes"
   Alerts:           "Alertas"
-  Open Strategic Projects:  "Proyectos Estrategicos Abiertos"
+  Open Strategic Projects:  "Eventos Estrategicos Abiertos"
 
 
-  Create Project:   "Crear Proyecto"
-  Listing Projects: "Listado de Proyectos"
+  Create Project:   "Crear Evento"
+  Listing Projects: "Listado de Eventos"
   Strategic goals:  "Objetivos Estrategicos"
 
   date:

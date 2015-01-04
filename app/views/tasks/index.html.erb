@@ -1,14 +1,14 @@
 <!--
 <%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-primary' %>
 <%= link_to "Atras", projects_path, :class => 'btn btn-primary' %> |
-<%= link_to "Editar Proyecto", edit_project_path(@project), :class => 'btn btn-primary' %>
+<%= link_to "Editar Evento", edit_project_path(@project), :class => 'btn btn-primary' %>
 -->
 <%= link_to "Atras", projects_path, :class => 'btn btn-default' %> |
-<%= link_to "Detalles Proyecto", project_path(@project), :class => 'btn btn-default' %>
+<%= link_to "Detalles Evento", project_path(@project), :class => 'btn btn-default' %>
 <%= link_to 'Crear Tarea', new_project_task_path(@project), :class => 'btn btn-default' %>
 <hr>
 <div class="panel-heading">
-      <h6 class="panel-title">Progreso Total del Proyecto <%= link_to(@project.alias.upcase, @project)%> <%= raw flag_project(@project.tasks) %></h6>
+      <h6 class="panel-title">Progreso Total del Evento <%= link_to(@project.alias.upcase, @project)%> <%= raw flag_project(@project.tasks) %></h6>
       <h6 class="panel-title"><span class="pull-right">Total Tasks: <%= @tasks.count %></span></h6>
       <br>
       <div class="progress">
@@ -58,9 +58,8 @@
               <% else %>
                 <%= 'NO Puede Editar' %>
               <% end %>
-              | <%= link_to "All Impairments(#{task.inpairments.count})", project_task_inpairments_path(@project,task) %>
+              | <%= link_to "Todos los Impedimentos(#{task.inpairments.count})", project_task_inpairments_path(@project,task) %>
             </div>
-  
           </td>
         </tr>
       </table>

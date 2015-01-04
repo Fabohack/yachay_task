@@ -29,19 +29,19 @@
         
         <div class="field">
           <%= f.label :description %><br>
-          <%= f.text_area :description, class: 'form-control' , :placeholder => "Task Description" %>
+          <%= f.text_area :description, class: 'form-control' , :placeholder => "Descripcion de la tarea" %>
         </div>
         <div class="field">        
           <table>
             <tr>
               <td width="20">
                   <%= f.label :deadline %><br>
-                  <%= f.text_field :deadline , :placeholder => "Day-Month-Year" %>
+                  <%= f.text_field :deadline , :placeholder => "Dia-Mes-Año" %>
               </td>
 
               <td width="20">
                 <%= f.label :real_deadline %><br>
-                <%= f.text_field :real_deadline , :placeholder => "Day-Month-Year" %>
+                <%= f.text_field :real_deadline , :placeholder => "Dia-Mes-Año" %>
               </td>
             </tr>
             <tr>
@@ -69,7 +69,7 @@
 
                 <td width="100">
                     <center>
-                      <%= f.label "Assigned to" %><br>
+                      <%= f.label "Asignada a:" %><br>
                       <%= collection_select(:task, :assigned_to_id, User.all.order(email: :asc), :id, :email, {:prompt => 'No one assigned'}) %>
                     </center>
                 </td>
@@ -89,7 +89,7 @@
 
                       <td width="100">
                         <center>
-                          <%= f.label "Assigned to" %><br>
+                          <%= f.label "Asignada a:" %><br>
                           <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
                         </center>
                       </td>
@@ -105,7 +105,7 @@
                       <% if :assigned_to_id == current_user.id or :assigned_to_id == :assigned_to_id   %>
                           <td width="100">
                             <center>
-                              <%= f.label "Assigned to" %><br>
+                              <%= f.label "Asignada a:" %><br>
                               <%= collection_select(:task, :assigned_to_id, User.all, :id, :email, {:prompt => 'No one assigned'}) %>
                             </center>
                           </td>
@@ -139,9 +139,9 @@
 
     <%= button_tag(type: 'submit', class: "btn btn-default btn-sm") do %>
         <%  if params[:action] == 'new' %>
-          Create Task
+          Crear Tarea
         <% else %>
-          Update Task
+          Actualizar Tarea
         <% end %>
       <% end %>    
       <%= link_to :back, :class => 'btn btn-default btn-sm' do %>Cancel<% end %>   
