@@ -1,8 +1,8 @@
 <%= link_to 'Atras',project_tasks_path(@project,@tasks), class: 'btn btn-default' %> |
-<%= link_to 'Nuevo Impedimento',new_project_task_inpairment_path, class: 'btn btn-default' %>
+<%= link_to 'Nueva Observacion',new_project_task_inpairment_path, class: 'btn btn-default' %>
 <hr>
 <div class="panel-heading">
-  <h5><%= @inpairments.count %> Observaciones/Impedimentos para <%= link_to(@task.description, @tasks)%></h5>
+  <h5><%= @inpairments.count %> Observaciones para <%= link_to(@task.description, @tasks)%></h5>
  </div>
 
 <table class="table table-responsive">

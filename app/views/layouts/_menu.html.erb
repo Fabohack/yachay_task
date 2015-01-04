@@ -59,7 +59,7 @@
 			<li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Eventos'.html_safe, projects_path %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Mis Tareas'.html_safe, filtered_tasks_path(current_user) %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Todas las Tareas'.html_safe, All_tasks_path(current_user)   %></li>
-            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Impedimentos'.html_safe, filtered_impairments_path(:impar) %></li>
+            <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Observaciones'.html_safe, filtered_impairments_path(:impar) %></li>
             <li><%= link_to '<i class="glyphicon glyphicon-tasks"></i> Tareas x Usuario'.html_safe, filtered_users_path(:choose) %></li>
           <% if current_user.admin? %>
 
