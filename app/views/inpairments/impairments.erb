@@ -1,10 +1,10 @@
-<h1>Impedimentos</h1>
+<h1>Observaciones/Impedimentos</h1>
 
 <% @inpairments.each do |impar| %>
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <b>Impedimento: <%= impar.inpadesc %></b>
+        <b>Observacion/Impedimento: <%= impar.inpadesc %></b>
       </div><!--/panel-heading-->
       <div class="panel-body">
         <table>
@@ -17,7 +17,10 @@
               <b></b>
               <%= %>
             </td>
-
+            <td width="100" align="center">
+              <b></b>
+              <%=format_Inpairment(impar) %>
+            </td>
             <td width="100" align="center">
               <b></b>
               <%=format_critical(impar,'center') %>

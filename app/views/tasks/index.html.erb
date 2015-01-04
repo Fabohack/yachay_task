@@ -16,7 +16,7 @@
         
       </div>      
     </div><!--/panel-heading--> 
-      <h3>Listado de Tareas para: <%= link_to(@project.name, @project)%></h3>
+      <h4>Listado de Tareas para: <%= link_to(@project.name, @project)%></h4>
 <hr>
 
 <% @tasks.each do |task| %>
@@ -58,7 +58,7 @@
               <% else %>
                 <%= 'NO Puede Editar' %>
               <% end %>
-              | <%= link_to "Todos los Impedimentos(#{task.inpairments.count})", project_task_inpairments_path(@project,task) %>
+              | <%= link_to "Todos los Impedimentos y/o Observaciones(#{task.inpairments.count})", project_task_inpairments_path(@project,task) %>
             </div>
           </td>
         </tr>
